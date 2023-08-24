@@ -206,6 +206,7 @@ ORDER BY visit_count DESC
 LIMIT 1;
 
 -- Who was Maisy Smith's first visit?
+
 SELECT animals.name AS animal_name, visits.date_of_visit AS first_visit_date
 FROM animals
 JOIN visits ON animals.id = visits.animal_id
