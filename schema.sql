@@ -70,3 +70,11 @@ CREATE TABLE vets (
     age integer,
     date_of_graduation date
 );
+
+
+-- Create the specializations join table
+CREATE TABLE IF NOT EXISTS specializations (
+    vet_id integer REFERENCES vets(id),
+    species_id integer REFERENCES species(id),
+    PRIMARY KEY (vet_id, species_id)
+);
