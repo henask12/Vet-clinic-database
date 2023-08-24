@@ -41,3 +41,24 @@ CREATE TABLE species (
     id serial PRIMARY KEY,
     name varchar(255)
 );
+
+-- First, drop the existing foreign key constraints if any
+ALTER TABLE animals
+DROP CONSTRAINT IF EXISTS fk_species;
+
+ALTER TABLE animals
+DROP CONSTRAINT IF EXISTS fk_owner;
+
+-- Drop the column species
+ALTER TABLE animals
+DROP COLUMN species;
+
+-- Add the new columns species_id and owner_id
+ALTER TABLE animals
+ADD COLUMN species_id integer REFERENCES species(id),
+ADD COLUMN owner_id integer REFERENCES owners(id);
+
+-- Recreate the foreign key constraints
+ALTER TABLE animals
+ADD CONSTRAINT fk_species FOREIGN KEY (species_id) REFERENCES species(id),
+ADD CONSTRAINT fk_owner FOREIGN KEY (owner_id) REFERENCES owners(id);
