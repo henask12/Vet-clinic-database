@@ -24,3 +24,7 @@ CREATE DATABASE vet_clinic
     neutered boolean,
     weight_kg decimal
 );
+
+-- altering animals table 
+ALTER TABLE animals
+ADD COLUMN species varchar(255);
