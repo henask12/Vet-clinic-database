@@ -78,3 +78,11 @@ CREATE TABLE IF NOT EXISTS specializations (
     species_id integer REFERENCES species(id),
     PRIMARY KEY (vet_id, species_id)
 );
+
+-- Create the visits join table
+CREATE TABLE IF NOT EXISTS visits (
+    animal_id integer REFERENCES animals(id),
+    vet_id integer REFERENCES vets(id),
+    date_of_visit date,
+    PRIMARY KEY (animal_id, vet_id, date_of_visit)
+);
