@@ -126,6 +126,11 @@ FROM animals
 JOIN species ON animals.species_id = species.id
 WHERE species.name = 'Pokemon';
 
+-- List all owners and their animals, including those that don't own any animal.
+SELECT owners.full_name, animals.name
+FROM owners
+LEFT JOIN animals ON owners.id = animals.owner_id
+ORDER BY owners.full_name;
 
 
 
