@@ -28,3 +28,16 @@ CREATE DATABASE vet_clinic
 -- altering animals table 
 ALTER TABLE animals
 ADD COLUMN species varchar(255);
+
+-- Create the owners table
+CREATE TABLE owners (
+    id serial PRIMARY KEY,
+    full_name varchar(255),
+    age integer
+);
+
+-- Create the species table
+CREATE TABLE species (
+    id serial PRIMARY KEY,
+    name varchar(255)
+);
