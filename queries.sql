@@ -223,3 +223,12 @@ JOIN animals ON visits.animal_id = animals.id
 JOIN vets ON visits.vet_id = vets.id
 ORDER BY visits.date_of_visit DESC
 LIMIT 1;
+
+-- How many visits were with a vet that did not specialize in that animal's species?
+
+SELECT COUNT(visits.animal_id) AS mismatched_specialty_count
+FROM visits
+JOIN animals ON visits.animal_id = animals.id
+JOIN vets ON visits.vet_id = vets.id
+LEFT JOIN specializations ON vets.id = specializations.vet_id AND animals.species_id = specializations.species_id
+WHERE specializations.vet_id IS NULL;
